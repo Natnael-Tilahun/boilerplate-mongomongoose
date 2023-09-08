@@ -1,10 +1,44 @@
 require('dotenv').config();
+const mongoose = require('mongoose');
+const { Schema, model } = mongoose;
 
+process.on('unhandledRejection', (reason, promise) => {
+  console.log('Unhandled Rejection at:', promise, 'reason:', reason);
+  throw new Error('Unhandled Rejection');
+});
 
-let Person;
+mongoose
+  .connect(process.env.MONGO_URI, {
+    useNewUrlParser: true,
+    useUnifiedTopology: true,
+  })
+  .then(() => console.log('MongoDB Connected...'))
+  .catch((err) => {
+    console.log('Error connecting to MongoDB:', err);
+    process.exit(1); // Exit the process with failure
+  });
+
+const personSchema = new Schema({
+  name: {
+    type: String,
+    required: true,
+  },
+  age: Number,
+  favoriteFoods: [String],
+});
+
+let Person = model('Person', personSchema);
 
 const createAndSavePerson = (done) => {
-  done(null /*, data*/);
+  let Natnael = new Person({
+    name: 'Natnael Tilahun',
+    age: 24,
+    favoriteFoods: ['Salad', 'Egg'],
+  });
+  Natnael.save(function (err, data) {
+    if (err) return console.error('Saving error: ', err);
+    done(null, data);
+  });
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
@@ -24,7 +58,7 @@ const findPersonById = (personId, done) => {
 };
 
 const findEditThenSave = (personId, done) => {
-  const foodToAdd = "hamburger";
+  const foodToAdd = 'hamburger';
 
   done(null /*, data*/);
 };
@@ -40,13 +74,13 @@ const removeById = (personId, done) => {
 };
 
 const removeManyPeople = (done) => {
-  const nameToRemove = "Mary";
+  const nameToRemove = 'Mary';
 
   done(null /*, data*/);
 };
 
 const queryChain = (done) => {
-  const foodToSearch = "burrito";
+  const foodToSearch = 'burrito';
 
   done(null /*, data*/);
 };
