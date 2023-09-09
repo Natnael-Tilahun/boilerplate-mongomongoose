@@ -42,6 +42,31 @@ const createAndSavePerson = (done) => {
 };
 
 const createManyPeople = (arrayOfPeople, done) => {
+  const arrryOfPeople = [
+    {
+      name: 'Natnael Tilahun',
+      age: 24,
+      favoriteFoods: ['Salad', 'Egg'],
+    },
+    {
+      name: 'Natnael Tilahun',
+      age: 24,
+      favoriteFoods: ['Salad', 'Egg'],
+    },
+    {
+      name: 'Natnael Tilahun',
+      age: 24,
+      favoriteFoods: ['Salad', 'Egg'],
+    },
+  ];
+  Person.create(arrayOfPeople, function (err, done) {
+    if (!err) {
+      console.log('Data saved successfully!!');
+      done(null, data);
+    } else {
+      console.error('Error to save data: ', err);
+    }
+  });
   done(null /*, data*/);
 };
 
