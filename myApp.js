@@ -67,19 +67,45 @@ const createManyPeople = (arrayOfPeople, done) => {
       console.error('Error to save data: ', err);
     }
   });
-  done(null /*, data*/);
 };
 
+const personName = {
+  name: 'Natnael Tilahun',
+};
 const findPeopleByName = (personName, done) => {
-  done(null /*, data*/);
+  Person.find(personName, function (err, done) {
+    if (!err) {
+      done(null, data);
+    } else {
+      console.error('Unable to fine the person:', err);
+    }
+  });
 };
 
+const food = {
+  favoriteFoods: ['egg'],
+};
 const findOneByFood = (food, done) => {
-  done(null /*, data*/);
+  Person.findOne(food, function (err, done) {
+    if (!err) {
+      done(null, data);
+    } else {
+      console.error('Unable to find this:', err);
+    }
+  });
 };
 
+const personId = {
+  _id: 'jfkdsaf',
+};
 const findPersonById = (personId, done) => {
-  done(null /*, data*/);
+  Person.findById(personId, function (err, done) {
+    if (!err) {
+      done(null, data);
+    } else {
+      console.error('Unable to find this:', err);
+    }
+  });
 };
 
 const findEditThenSave = (personId, done) => {
