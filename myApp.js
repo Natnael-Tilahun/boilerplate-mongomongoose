@@ -41,24 +41,24 @@ const createAndSavePerson = (done) => {
   });
 };
 
+const arrryOfPeople = [
+  {
+    name: 'Natnael Tilahun',
+    age: 24,
+    favoriteFoods: ['Salad', 'Egg'],
+  },
+  {
+    name: 'Natnael Tilahun',
+    age: 24,
+    favoriteFoods: ['Salad', 'Egg'],
+  },
+  {
+    name: 'Natnael Tilahun',
+    age: 24,
+    favoriteFoods: ['Salad', 'Egg'],
+  },
+];
 const createManyPeople = (arrayOfPeople, done) => {
-  const arrryOfPeople = [
-    {
-      name: 'Natnael Tilahun',
-      age: 24,
-      favoriteFoods: ['Salad', 'Egg'],
-    },
-    {
-      name: 'Natnael Tilahun',
-      age: 24,
-      favoriteFoods: ['Salad', 'Egg'],
-    },
-    {
-      name: 'Natnael Tilahun',
-      age: 24,
-      favoriteFoods: ['Salad', 'Egg'],
-    },
-  ];
   Person.create(arrayOfPeople, function (err, done) {
     if (!err) {
       console.log('Data saved successfully!!');
